@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.css">
         <style>
         .post {
-            margin-bottom: 5px;    //配置每个post卡片下面的间隔
+            margin-bottom: 5px;    // 配置每个post卡片下面的间隔
         }
         </style>
     </head>
@@ -56,6 +56,9 @@
                         </div>
                         {% endfor %}
                     {% endblock %}
+                    <div class="card sidebar">
+                        <h5 class="card-body"><a href="{% url 'links' %}">友情链接</a></h5>
+                    </div>
                 </div>
             </div>
         </div>
