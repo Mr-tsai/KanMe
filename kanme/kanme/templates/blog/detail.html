@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8"/>
-<title>KanMe博客系统</title>
-</head>
-<body>
-    <div>顶部分类：
-        {% for cate in navs %}
-        <a href="/category/{{ cate.id }}/">{{ cate.name }}</a>
-        {% endfor %}
-    </div>
+{% extends "./base.html" %}
+
+{% block title %} {{ post.title }} {% endblock %}
+
+{% block main %}
     {% if post %}
     <h1>{{ post.title }}</h1>
     <div>
@@ -21,11 +14,4 @@
     {{ post.content }}
     </p>
     {% endif %}
-    <hr/>
-    <div>底部分类：
-        {% for cate in navs %}
-        <a href="/category/{{ cate.id }}/">{{ cate.name }}</a>
-        {% endfor %}
-    </div>
-</body>
-</html>
+{% endblock %}
