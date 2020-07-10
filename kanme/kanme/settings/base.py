@@ -56,7 +56,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'kanme.urls'
 
-THEME = 'default'
+THEME = 'bootstrap'
 
 TEMPLATES = [
     {
