@@ -1,3 +1,4 @@
+import mistune
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -82,6 +83,7 @@ class Post(models.Model):
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
     pv = models.PositiveIntegerField(default=1)
     uv = models.PositiveIntegerField(default=1)
+    content_html = models.TextField(verbose_name="正文html代码", blank=True, editable=False)
 
     class Meta:
         verbose_name = verbose_name_plural = "文章"
@@ -120,3 +122,7 @@ class Post(models.Model):
     def latest_posts(cls):
         queryset = cls.objects.filter(status=cls.STATUS_NORMAL)
         return queryset
+    
+    def save(self, *args, **kwargs):
+        self.content_html = mistune.markdown(self.content)
+        super().save(*args, **kwargs)
