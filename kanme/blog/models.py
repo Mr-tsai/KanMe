@@ -123,6 +123,10 @@ class Post(models.Model):
         queryset = cls.objects.filter(status=cls.STATUS_NORMAL)
         return queryset
     
+    @classmethod
+    def hot_posts(cls):
+        return cls.objects.filter(status=cls.STATUS_NORMAL).order_by('-pv')
+
     def save(self, *args, **kwargs):
         self.content_html = mistune.markdown(self.content)
         super().save(*args, **kwargs)
